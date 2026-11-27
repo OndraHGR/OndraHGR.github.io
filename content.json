@@ -1,0 +1,71 @@
+{
+  "settings": {
+    "brand": "Ondra Foto",
+    "title": "Ondra Foto — portfolio",
+    "description": "Portfolio studenta oboru Fotograf: galerie, projekty a školní zadání.",
+    "email": "",
+    "instagram": "",
+    "copyright": "© {year} Ondra Foto"
+  },
+  "hero": {
+    "tag": "Portfolio  ·  Student oboru Fotograf",
+    "title1": "Světlo, stín",
+    "title2": "a okamžik.",
+    "lead": "Výběr mé práce ze studia: reportáž, portrét, ateliér i noční experimenty.",
+    "button": "Prohlédnout galerii",
+    "photo": null
+  },
+  "sections": [
+    {
+      "id": "galerie",
+      "type": "gallery",
+      "visible": true,
+      "label": "Galerie",
+      "title": "Vybrané snímky.",
+      "note": "Kliknutím se fotka otevře ve velkém.",
+      "items": [
+        { "title": "První fotka", "cat": "Reportáž" },
+        { "title": "Druhá fotka", "cat": "Portrét" },
+        { "title": "Třetí fotka", "cat": "Ateliér" },
+        { "title": "Čtvrtá fotka", "cat": "Noční" }
+      ]
+    },
+    {
+      "id": "projekty",
+      "type": "projects",
+      "visible": true,
+      "label": "Projekty",
+      "title": "Projekty a zadání.",
+      "note": "",
+      "items": [
+        {
+          "title": "Název projektu",
+          "date": "Podzim 2026",
+          "note": "",
+          "text": "Krátký popis: co bylo zadání, kde a jak fotky vznikly a co se na nich povedlo.",
+          "tags": "Reportáž, Denní světlo",
+          "photos": []
+        }
+      ]
+    },
+    {
+      "id": "o-mne",
+      "type": "text",
+      "visible": true,
+      "label": "O mně",
+      "title": "Kdo za tím stojí.",
+      "note": "",
+      "body": "Jsem student oboru Fotograf. Baví mě hledat světlo tam, kde ho ostatní přehlédnou.",
+      "photo": null
+    },
+    {
+      "id": "kontakt",
+      "type": "contact",
+      "visible": true,
+      "label": "Kontakt",
+      "title": "Pojďme něco vyfotit.",
+      "note": "",
+      "text": "Focení, spolupráce nebo jen dotaz? Napiš mi."
+    }
+  ]
+}

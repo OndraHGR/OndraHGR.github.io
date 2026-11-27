@@ -1,0 +1,130 @@
+/* Editor chrome. Uses the same tokens as the site (see ../style.css). */
+
+body.locked > header,
+body.locked > main,
+body.locked > footer { display: none; }
+body.editing { padding-bottom: 76px; }
+
+/* ---------- login and setup ---------- */
+.login {
+  position: relative;
+  width: min(100% - 32px, 400px); margin: 14vh auto 48px;
+  border: 1px solid var(--line); background: var(--panel);
+  padding: 28px; display: flex; flex-direction: column; gap: 16px;
+}
+.login-wide { width: min(100% - 32px, 520px); margin-top: 7vh; }
+/* The same small crosses as on the gallery grid, on two corners of the panel. */
+.login::before, .login::after { content: "+"; position: absolute; font: 14px/18px var(--mono); color: var(--muted); }
+.login::before { left: -5px; top: -10px; }
+.login::after { right: -5px; bottom: -10px; }
+.login h1 { font-size: clamp(36px, 8vw, 52px); }
+.login label, .ed-dialog label {
+  display: flex; flex-direction: column; gap: 6px;
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted);
+}
+.login input, .ed-dialog input, .ed-dialog select {
+  font: 15px/1.4 var(--sans); color: var(--text); background: var(--bg);
+  border: 1px solid var(--line); border-radius: 0; padding: 11px 12px; width: 100%;
+  letter-spacing: 0; text-transform: none;
+}
+.login input:focus, .ed-dialog input:focus, .ed-dialog select:focus { outline: 1px solid var(--accent); outline-offset: 0; border-color: var(--accent); }
+.login .pill { justify-content: center; margin-top: 4px; }
+.login .pill:disabled { opacity: 0.5; cursor: wait; }
+.login-msg { min-height: 1.6em; font-size: 13px; color: var(--accent); }
+.login-help { font-size: 14px; color: var(--muted); }
+.login-link {
+  align-self: flex-start; background: none; border: 0; padding: 0; cursor: pointer; text-align: left;
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; color: var(--muted); text-decoration: underline; text-underline-offset: 3px;
+}
+.login-link:hover { color: var(--text); }
+
+/* ---------- editable text ---------- */
+.ed { outline: 1px dashed transparent; outline-offset: 3px; cursor: text; min-width: 1ch; }
+.ed:hover { outline-color: var(--muted); }
+.ed:focus { outline: 1px solid var(--accent); }
+.ed:empty { display: inline-block; min-width: 6ch; }
+p.ed:empty, h2.ed:empty, h3.ed:empty, h1 .ed:empty { display: block; }
+.ed:empty::before { content: attr(data-ph); color: var(--muted); opacity: 0.6; }
+.pill-solid .ed:empty::before { color: #000; }
+.editing .pill-solid:hover { background: var(--accent); border-color: var(--accent); }
+.editing span.pill { cursor: default; }
+.tags-edit { display: block; width: 100%; font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; color: var(--muted); }
+
+/* ---------- item and section toolbars ---------- */
+.ed-item:not(.hero-photo) { position: relative; }
+.ed-tools { display: flex; gap: 3px; flex-wrap: wrap; }
+.ed-item > .ed-tools {
+  position: absolute; top: 8px; right: 8px; z-index: 3; justify-content: flex-end;
+  opacity: 0; transition: opacity 0.12s;
+}
+.ed-item:hover > .ed-tools, .ed-item:focus-within > .ed-tools { opacity: 1; }
+@media (hover: none) { .ed-item > .ed-tools { opacity: 1; } }
+.ed-item-slot > .ed-tools { opacity: 1; }
+.hero-photo > .ed-tools { top: 28px; right: auto; left: 24px; }
+.shot.ed-item > .ed-tools { top: 22px; right: 22px; }
+.editing .project.ed-item { padding-top: 56px; }
+.editing .project.ed-item > .ed-tools { top: 14px; right: var(--pad); }
+.strip .ed-item > .ed-tools { top: 4px; right: 4px; }
+.editing .frame.ed-item { overflow: visible; }
+
+.ed-tools button, .ed-btn {
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none;
+  color: var(--text); background: rgba(7, 7, 8, 0.86); border: 1px solid var(--line); border-radius: 999px;
+  padding: 5px 10px; cursor: pointer; white-space: nowrap;
+}
+.ed-tools button:hover, .ed-btn:hover { border-color: var(--text); }
+.ed-tools button.danger:hover { border-color: var(--accent); color: var(--accent); }
+.ed-tools-inline { grid-column: 1 / -1; }
+
+.ed-add {
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--muted); background: none; cursor: pointer;
+  border: 0; outline: 1px dashed var(--line); outline-offset: -14px; min-height: 140px;
+}
+.ed-add:hover { color: var(--accent); outline-color: var(--accent); }
+.grid > .ed-add { border: solid var(--line); border-width: 0 1px 1px 0; }
+.strip > .ed-add { min-height: 0; aspect-ratio: 1; outline-offset: -1px; }
+.projects > .ed-add { width: 100%; min-height: 96px; border-bottom: 1px solid var(--line); }
+
+section.is-hidden > *:not(.sec-head) { opacity: 0.3; }
+.ed-hidden-tag {
+  grid-column: 1 / -1; justify-self: start;
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+  color: #000; background: var(--muted); padding: 2px 10px; border-radius: 999px;
+}
+
+/* ---------- bottom bar ---------- */
+.ed-bar {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 30;
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px 16px;
+  padding: 10px var(--pad);
+  background: rgba(15, 15, 17, 0.94); border-top: 1px solid var(--accent);
+  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+}
+.ed-bar-left, .ed-bar-right { display: flex; align-items: center; flex-wrap: wrap; gap: 6px 10px; }
+.ed-mode {
+  font-family: var(--mono); font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+  background: var(--accent); color: #000; padding: 4px 10px; border-radius: 999px;
+}
+.ed-status { font-family: var(--mono); font-size: 12px; color: var(--muted); }
+.is-dirty .ed-status { color: var(--accent); }
+.ed-bar .ed-btn { padding: 8px 12px; background: none; }
+.ed-publish { padding: 9px 18px; }
+body:not(.is-dirty) .ed-publish { opacity: 0.4; }
+
+/* ---------- dialogs ---------- */
+.ed-dialog {
+  width: min(100% - 32px, 480px);
+  background: var(--panel); color: var(--text);
+  border: 1px solid var(--line); padding: 26px;
+}
+.ed-dialog::backdrop { background: rgba(0, 0, 0, 0.72); }
+.ed-dialog form { display: flex; flex-direction: column; gap: 14px; }
+.ed-dialog h2 { font-size: 30px; margin-bottom: 6px; }
+.ed-dialog-row { display: flex; justify-content: flex-end; align-items: center; gap: 10px; margin-top: 8px; }
+.ed-dialog .ed-btn { padding: 10px 14px; background: none; }
+
+@media (max-width: 720px) {
+  body.editing { padding-bottom: 150px; }
+  .hero-photo > .ed-tools { top: 12px; left: var(--pad); }
+}

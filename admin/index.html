@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="cs" data-admin>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' blob: data:; style-src 'self'; script-src 'self'; connect-src 'self' https://api.github.com; base-uri 'none'; form-action 'none'">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="referrer" content="no-referrer">
+  <title>Editor</title>
+  <meta name="theme-color" content="#070708">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body class="locked">
+  <header class="top">
+    <a id="brand" class="brand" href="#top"></a>
+    <nav id="nav" aria-label="Sekce"></nav>
+    <a id="nav-cta" class="pill" hidden></a>
+  </header>
+  <main id="top">
+    <section class="hero" id="hero"></section>
+    <div id="sections"></div>
+  </main>
+  <footer id="foot" class="foot"></footer>
+  <div id="admin-root"></div>
+  <script src="../site.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>
